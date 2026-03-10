@@ -1,0 +1,289 @@
+{
+  "info": {
+    "_postman_id": "77019af2-10d6-4aa5-9ba3-5e69b00f8063",
+    "name": "Items",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48033537",
+    "_collection_link": "https://go.postman.co/collection/48033537-77019af2-10d6-4aa5-9ba3-5e69b00f8063?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var response = pm.response.json();\r",
+              "pm.collectionVariables.set(\"ITEM_ID\", response.Id);\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify ITEM has correct name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Item Silvia con Variable de Coleccion v3\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "19922452@aloe.ulima.edu.pe",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Content\": \"Item Silvia con Variable de Coleccion v3\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/items.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "items.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Leer",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify ITEM has correct name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Item Silvia con Variable de Coleccion v3\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "19922452@aloe.ulima.edu.pe",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/items/{{ITEM_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "items",
+            "{{ITEM_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify ITEM has correct name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Item Silvia con Variable de Coleccion v3\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "19922452@aloe.ulima.edu.pe",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Content\": \"Item Silvia con Variable de Coleccion v3\",\r\n    \"Checked\": false\r\n }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/items/{{ITEM_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "items",
+            "{{ITEM_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify ITEM has correct name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Item Silvia con Variable de Coleccion v3\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify ITEM has been deleted\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Deleted).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "19922452@aloe.ulima.edu.pe",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/items/{{ITEM_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "items",
+            "{{ITEM_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "ITEM_ID",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
